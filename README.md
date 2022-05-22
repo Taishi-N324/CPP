@@ -1,4 +1,4 @@
-# CPP
+# Creative Programming Projects
 
 conda install pytorch torchvision -c pytorch
 
