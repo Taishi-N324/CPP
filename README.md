@@ -1,5 +1,7 @@
 # CPP
 
+conda install pytorch torchvision -c pytorch
+
 conda activate cpp
 
 pip install transformers
