@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>template test</title>
+</head>
+<body>
+  <h1>自然言語処理</h1>
+  <h2>機械翻訳</h2>
+  <h2>ポジティブかどうかの測定を行う。</h2>
+  <form method="post" action="output">
+    {% csrf_token %}
+    <input type="text" name="date">
+    <input type="submit">
+  </form>
+  <h2>要約</h2>
+
+</body>
+</html>
