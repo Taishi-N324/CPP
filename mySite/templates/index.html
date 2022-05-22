@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{% static '/favicons/favicon.ico' %}">
   <title>template test</title>
 </head>
 <body>
@@ -19,6 +20,13 @@
   <div>
 
   <p>独自で開発した機械翻訳</p>
+  <div class="container">
+    <form method="post" action="my_translate">
+      {% csrf_token %}
+      <input type="text" name="my_translate" placeholder="まだ未実装です....">
+      <input type="submit">
+    </form>
+  <div>
 
 
 
