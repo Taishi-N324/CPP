@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>template test</title>
+</head>
+<body>
+  <h1>自然言語処理</h1>
+  <h2>機械翻訳</h2>
+  <p>googleで翻訳された結果</p>
+  <form method="post" action="google_translate">
+    {% csrf_token %}
+    <input type="text" name="google_translate">
+    <input type="submit">
+  </form>
+
+
+
+  <h2>ポジティブかどうかの測定を行う。</h2>
+  <p>反映されるまでやや時間がかかります</p>
+  <form method="post" action="output">
+    {% csrf_token %}
+    <input type="text" name="date">
+    <input type="submit">
+  </form>
+  <h2>要約</h2>
+
+  <h2>もとのページに遷移する</h2>
+  <a href="http://127.0.0.1:8000/myapp/templates/">元のページに戻る</a>
+
+
+</body>
+</html>
