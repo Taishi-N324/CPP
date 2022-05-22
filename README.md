@@ -4,7 +4,7 @@ conda install pytorch torchvision -c pytorch
 
 conda activate cpp
 
-pip install googletranslate
+pip install googletranslate  or   pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
 
 
 pip install nltk
