@@ -1,0 +1,39 @@
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+
+
+
+p {
+  text-align: center
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+li {
+  width: 20%;
+  border-left: 1px solid #aaaaaa;
+}
+
+li:last-child {
+  border-right: 1px solid #aaaaaa;
+}
+
+li a {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+li a span {
+  color: #053e62;
+  font-size: 13px;
+}
