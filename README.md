@@ -17,3 +17,4 @@ pip install ipadic
 
 pip install mecab-python3 unidic-lite
 
+python3 manage.py runserver
