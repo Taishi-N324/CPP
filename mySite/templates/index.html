@@ -1,19 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="css/cssStyle.css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
   <title>template test</title>
 </head>
 <body>
   <h1>自然言語処理</h1>
   <h2>機械翻訳</h2>
   <p>googleで翻訳された結果</p>
-  <form method="post" action="google_translate">
-    {% csrf_token %}
-    <input type="text" name="google_translate">
-    <input type="submit">
-  </form>
+  <div class="container">
+    <form method="post" action="google_translate">
+      {% csrf_token %}
+      <input type="text" name="google_translate" placeholder="日本語を入力をしてください">
+      <input type="submit">
+    </form>
+  <div>
 
   <p>独自で開発した機械翻訳</p>
 
@@ -23,7 +26,7 @@
   <p>反映されるまでやや時間がかかります</p>
   <form method="post" action="output">
     {% csrf_token %}
-    <input type="text" name="date">
+    <input type="text" name="date" placeholder="日本語を入力をしてください">
     <input type="submit">
   </form>
   <h2>要約</h2>
