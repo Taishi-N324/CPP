@@ -4,6 +4,8 @@ conda install pytorch torchvision -c pytorch
 
 conda activate cpp
 
+pip install nltk
+
 pip install transformers
 
 pip install fugashi
