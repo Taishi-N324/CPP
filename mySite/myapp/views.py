@@ -38,16 +38,35 @@ def input_google(request):
     template = loader.get_template("index.html")
     return HttpResponse(template.render({}, request))
 
+#
+# def input_my_translate(request):
+#     template = loader.get_template("index.html")
+#     return HttpResponse(template.render({}, request))
+
+# def output_my_translate(request):
+#     src = request.POST["google_translate"]
+#     tr = Translator(service_urls=['translate.googleapis.com'])
+#     trans = tr.translate(src, dest="en").text
+#
+#     template = loader.get_template("google_translate/index.html")
+#     context = {
+#         "input_date": trans,
+#     }
+#     return HttpResponse(template.render(context, request))
+
+
+
 def output_google(request):
     src = request.POST["google_translate"]
     tr = Translator(service_urls=['translate.googleapis.com'])
     trans = tr.translate(src, dest="en").text
-
     template = loader.get_template("google_translate/index.html")
+    #trans ="Hello"
+    #src="aaaaa"
     context = {
         "input_date": trans,
+        "original_date": src,
     }
-
     return HttpResponse(template.render(context, request))
 
 
