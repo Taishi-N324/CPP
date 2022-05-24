@@ -1,5 +1,7 @@
 # Creative Programming Projects
 
+pip install django
+
 conda install pytorch torchvision -c pytorch
 
 conda activate cpp
