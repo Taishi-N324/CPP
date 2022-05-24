@@ -6,6 +6,8 @@ conda activate cpp
 
 pip install googletranslate  or   pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
 
+pip install tensorflow
+
 
 pip install nltk
 
