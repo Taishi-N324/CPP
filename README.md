@@ -1,6 +1,6 @@
 # Creative Programming Projects
 
-windows　 conda install -c conda-forge django
+windows　 conda install -c conda-forge django        conda install -c anaconda django
 
 pip install django
 
