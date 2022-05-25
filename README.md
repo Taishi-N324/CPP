@@ -29,6 +29,9 @@ pip install ipadic
 
 pip install mecab-python3 unidic-lite
 
+pip install nltk
+
+
 python3 manage.py runserver
 
 http://127.0.0.1:8000/myapp/templates/ 
