@@ -1,5 +1,7 @@
 # Creative Programming Projects
 
+windows　 conda install -c conda-forge django
+
 pip install django
 
 conda install pytorch torchvision -c pytorch
