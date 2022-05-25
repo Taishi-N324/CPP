@@ -1,4 +1,23 @@
 # Creative Programming Projects
+## 1
+
+## 2 pip
+'''
+pip install googletranslate  or   
+pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
+pip install googletrans
+pip install tensorflow
+pip install nltk
+pip install transformers
+pip install fugashi
+pip install ipadic
+pip install mecab-python3 unidic-lite
+'''
+
+
+
+
+
 
 windows　 conda install -c conda-forge django        conda install -c anaconda django
 
@@ -10,8 +29,7 @@ conda install pytorch torchvision -c pytorch
 
 conda activate cpp
 
-pip install googletranslate  or   pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
-pip install googletrans
+
 
 pip install tensorflow
 
@@ -19,17 +37,10 @@ pip install -r requirements.txt
 
 
 
-pip install nltk
 
-pip install transformers
 
-pip install fugashi
 
-pip install ipadic
 
-pip install mecab-python3 unidic-lite
-
-pip install nltk
 
 
 python3 manage.py runserver
