@@ -15,6 +15,9 @@ pip install googletrans
 
 pip install tensorflow
 
+pip install -r requirements.txt
+
+
 
 pip install nltk
 
