@@ -6,10 +6,16 @@
   <link href="{% static './css/style.css' %}" rel="stylesheet">
 </head>
 <body>
-  <h2>googleによる翻訳結果</h2>
-  入力したもの:     {{ original_date }}
+  <h2>bleuスコア</h2>
+  参照元文章:    {{ bleu_ref}}
   <br>
-  翻訳結果:  <font color="red">  {{ input_date }}　</font>
+  精度を確かめたい文章 :    {{ bleu_text}}
+  <br>
+  結果:    {{ result }}
+  <br>
+
+  
+  
 
 
   <h2>もとのページに戻る</h2>
@@ -17,3 +23,4 @@
 
 </body>
 </html>
+

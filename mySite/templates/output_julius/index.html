@@ -6,10 +6,15 @@
   <link href="{% static './css/style.css' %}" rel="stylesheet">
 </head>
 <body>
-  <h2>googleによる翻訳結果</h2>
-  入力したもの:     {{ original_date }}
+  <h2>音声認識結果</h2>
+  {% for list in lists %}
+
+  {{ list }}
   <br>
-  翻訳結果:  <font color="red">  {{ input_date }}　</font>
+  
+  {% endfor %}
+ 
+  
 
 
   <h2>もとのページに戻る</h2>
@@ -17,3 +22,4 @@
 
 </body>
 </html>
+
