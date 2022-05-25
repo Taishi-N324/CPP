@@ -2,7 +2,9 @@
 ## 1
 
 ## 2 pip
-'pip install googletranslate  or   
+`pip install googletranslate  or   
+`
+
 
 
 pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
