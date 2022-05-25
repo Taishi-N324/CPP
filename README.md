@@ -37,7 +37,8 @@ pip install MosesTokenizer
 
 pip install tensorflow
 
-pip install -r requirements.txt
+
+pip install sacremoses
 
 
 
