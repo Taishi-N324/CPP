@@ -42,9 +42,9 @@ pip install sacremoses
 
 
 
+pip install sentencepiece
 
-
-
+pip install fairseq
 
 
 
