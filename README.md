@@ -65,3 +65,8 @@ ipconfig
 cd dictation-kit-4.5
 
 .\bin\windows\julius.exe -C main.jconf -C am-gmm.jconf -module -charconv utf-8 sjis
+
+
+
+conda install -c conda-forge sentencepiece
+
