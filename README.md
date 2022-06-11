@@ -2,21 +2,19 @@
 ## 1 tsv
 
 ## 2 pip
-`pip install googletranslate  or   
 `
-
-
-
-pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
-pip install googletrans
+pip install googletranslate  or   pip install googletrans  or pip install git+https://github.com/alainrouillon/py-googletrans@feature/enhance-use-of-direct-api
 pip install tensorflow
 pip install nltk
 pip install transformers
 pip install fugashi
 pip install ipadic
-
 pip install mecab-python3 unidic-lite
-'
+`
+
+
+
+
 
 
 
