@@ -15,7 +15,10 @@ import os
 
 new_dir_path = 'data/'
 
-os.mkdir(new_dir_path)
+try:
+    os.mkdir(new_dir_path)
+except:
+    pass
 
 
 en_trains = []
@@ -37,12 +40,20 @@ with open('CPP/ja_en_250000_7.txt') as f:
         en_trains.append(ja_en[0])
         ja_trains.append(ja_en[1])
 
+test = []
 
+last = [')','%','?','!',';',']','(', ':', '.',"'"]
 
 with open('data/en_train.txt', 'w') as f:
     for en_train in tqdm(en_trains):
-      f.write(en_train)
-      f.write('\n')
+        test.append(en_train[-1])
+
+        if en_train[-1] in last:
+            en_train_last = en_train[-1]
+            en_train = en_train[:-1]+ " " + en_train_last
+        f.write(en_train)
+        f.write('\n')
+
 f.close()
 
 with open('data/ja_train.txt', 'w') as f:
