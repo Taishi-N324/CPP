@@ -21,14 +21,14 @@
 
     <h2>fairseqを用いて機械翻訳</h2>
     <div class="container">
-      <form method="post" action="fairseq">
+      <form method="post" action="output_fairseq">
         {% csrf_token %}
-        <input type="text" name="fairseq" placeholder="英語を入力してください。">
+        <input type="text" name="output_fairseq" placeholder="英語を入力してください。">
         <input type="submit">
       </form>
     <div>
 
-  
+
 
   <p>独自で開発した機械翻訳</p>
   <div class="container">
@@ -54,7 +54,7 @@
   <div class="container">
     <form method="post" action="bleu">
       {% csrf_token %}
-    
+
       <input type="text" name="bleu_ref" placeholder="参照の文章を入れてください">
       <input type="text" name="bleu_text" placeholder="翻訳された結果の文章を入れてください。">
       <input type="submit">

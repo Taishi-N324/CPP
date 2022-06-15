@@ -7,7 +7,8 @@ from fairseq.models.transformer import TransformerModel
 
 mt = MosesTokenizer(lang = 'en')
 sp = spm.SentencePieceProcessor(model_file='bpe.model')
-model = TransformerModel.from_pretrained('./checkpoints/', checkpoint_file='checkpoint10.pt', data_name_or_path='data-bin')
+#print("1111111111111111111111111111111111111111111111111111111")
+model = TransformerModel.from_pretrained('checkpoints/', checkpoint_file='checkpoint10.pt', data_name_or_path='/Users/Taishi/Desktop/mySite/data_bin')
 
 
 
@@ -23,12 +24,14 @@ def preproc_en(x):
 
 def translate(x):
   x = preproc_en(x)
+  #print("aaaaa")
   x = model.translate(x, beam = 5, lenpen = 0.6)
+  #print("bbbbbbbb")
   x = ''.join(x.split()).replace('▁', '').strip()
   return x
 
 while True:
-    x = input('英文を入力 > ')
+    x = input('Please enter English > ')
     if not x:
         break
     x = translate(x)

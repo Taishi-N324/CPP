@@ -12,6 +12,23 @@ from transformers import pipeline
 from transformers import AutoModelForSequenceClassification
 from transformers import BertJapaneseTokenizer
 from googletrans import Translator
+import unicodedata
+from sacremoses import MosesTokenizer
+import sentencepiece as spm
+from fairseq.models.transformer import TransformerModel
+
+mt = MosesTokenizer(lang = 'en')
+sp = spm.SentencePieceProcessor(model_file='bpe.model')
+
+
+import sys
+
+# パスを確認
+print(sys.path)
+
+
+model = TransformerModel.from_pretrained('checkpoints/', checkpoint_file='checkpoint10.pt', data_name_or_path='/Users/Taishi/Desktop/mySite/data_bin')
+
 
 # Create your views here.
 
@@ -45,10 +62,10 @@ def input_bleu(request):
 def output_bleu(request):
     bleu_ref = request.POST["bleu_ref"]
     bleu_text = request.POST["bleu_text"]
-    
+
     reference = bleu_ref.split()
     hypothesis= bleu_text.split()
-    references = [reference] 
+    references = [reference]
     list_of_references = [references]
     list_of_hypotheses = [hypothesis]
 
@@ -57,7 +74,7 @@ def output_bleu(request):
 
 
     template = loader.get_template("bleu/index.html")
-    
+
     context = {
         "bleu_ref": bleu_ref,
         "bleu_text": bleu_text,
@@ -103,10 +120,10 @@ def output_google(request):
         trans = tr.translate(src, dest="en").text
     except:
         trans ="一日のAPIの呼び出し回数が限度を超えました"
-        
+
     template = loader.get_template("google_translate/index.html")
-  
-    
+
+
     context = {
         "input_date": trans,
         "original_date": src,
@@ -174,28 +191,71 @@ def output_julius(request):
         print('PROCESS END')
         client.send("DIE".encode('shift_jis'))
         client.close()
-        
+
     template = loader.get_template("output_julius/index.html")
-    
+
     if len(result_julius)>0:
         context = {'lists': result_julius}
     else:
         context = {'lists': ["音声を認識できませんでした。"]}
-        
+
 
     return HttpResponse(template.render(context, request))
 
 
 def index_test(request):
     context = {'lists': ["データ1", "データ2", "データ3"]}
-    return render(request, 'output_test/index.html', context)  
+    return render(request, 'output_test/index.html', context)
 
 
 
 def output_test(request):
-    
+
     template = loader.get_template("output_test/index.html")
     context = {'lists': ["データ1", "データ2", "データ3"]}
 
+
+    return HttpResponse(template.render(context, request))
+
+
+
+
+def preproc_en(x):
+  x = unicodedata.normalize('NFKC', x)
+  x = re.sub(mt.AGGRESSIVE_HYPHEN_SPLIT[0], r'\1 - ', x)
+  x = mt.tokenize(x, escape = False)
+  x = ' '.join(x)
+  x = x.lower()
+  x = ' '.join(sp.encode(x, out_type = 'str'))
+  return x
+
+def translate_fairseq(x):
+  x = preproc_en(x)
+  print(x,"aaaaaaaaaaaaaaaaaa")
+
+  x = model.translate(x, beam = 5, lenpen = 0.6)
+  print(x,"bbbbbbbbbbbbbbbbbb")
+
+  x = ''.join(x.split()).replace('▁', '').strip()
+  print(x,"cccccccccc")
+  return x
+
+
+def input_fairseq(request):
+    template = loader.get_template("index.html")
+    return HttpResponse(template.render({}, request))
+
+
+
+def output_fairseq(request):
+    x = request.POST["output_fairseq"]
+
+
+
+    template = loader.get_template("output_fairseq/index.html")
+    x = translate_fairseq(x)
+    context = {
+        "input_date": x,
+    }
 
     return HttpResponse(template.render(context, request))
