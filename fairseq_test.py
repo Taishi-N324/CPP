@@ -8,7 +8,8 @@ from fairseq.models.transformer import TransformerModel
 mt = MosesTokenizer(lang = 'en')
 sp = spm.SentencePieceProcessor(model_file='bpe.model')
 #print("1111111111111111111111111111111111111111111111111111111")
-model = TransformerModel.from_pretrained('checkpoints/', checkpoint_file='checkpoint10.pt', data_name_or_path='/Users/Taishi/Desktop/mySite/data_bin')
+#model = TransformerModel.from_pretrained('checkpoints/', checkpoint_file='checkpoint10.pt', data_name_or_path='/Users/Taishi/Desktop/mySite/data_bin')
+model = TransformerModel.from_pretrained('checkpoints/', checkpoint_file='checkpoint_best_tokyotech.pt', data_name_or_path='/Users/Taishi/Desktop/mySite/data_bin_tokyotech')
 
 
 
