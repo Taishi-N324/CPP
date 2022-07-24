@@ -9,6 +9,7 @@ import string
 from tensorflow.keras import layers
 from tensorflow.python.keras.models import load_model
 from tensorflow import keras
+from tqdm import tqdm
 vocab_size = 20000
 sequence_length = 30
 batch_size = 64
@@ -218,8 +219,17 @@ def decode_sequence(input_sentence):
 
 print("start-------------------")
 while True:
-  input_sentence = str(input())
-  print(decode_sequence(input_sentence)[8:-6])
+    data = input()
+    print(decode_sequence(data.strip())[8:-6])
+# decode_sequence(data.strip())[8:-6]
+# with open("seq2seq_transformer_large_test" ,mode='a') as f_test:
+#     with open("english_texts_trans") as f:
+#         datalist = f.readlines()
+#         for data in tqdm(datalist):
+#             f_test.writelines(decode_sequence(data.strip())[8:-6])
+#             f_test.writelines("\n")
+
+
 
 # for _ in range(20):
 #     input_sentence = random.choice(test_eng_texts)
