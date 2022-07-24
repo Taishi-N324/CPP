@@ -9,24 +9,35 @@ import string
 from tensorflow.keras import layers
 from tensorflow.python.keras.models import load_model
 from tensorflow import keras
-vocab_size = 20000
-sequence_length = 30
+vocab_size = 150000
+sequence_length = 50
 batch_size = 64
 embed_dim = 256
 latent_dim = 1024
 from tensorflow.python.keras.models import load_model
 from tensorflow import keras
+from tqdm import tqdm
+
 
 train_japanese_texts = []
 train_english_texts = []
-with open("japanese_texts_trans_large") as f:
-    datalist = f.readlines()
-    for data in datalist:
-        train_english_texts.append(data.strip())
 with open("english_texts_trans_large") as f:
     datalist = f.readlines()
     for data in datalist:
+        train_english_texts.append(data.strip())
+with open("japanese_texts_trans_large") as f:
+    datalist = f.readlines()
+    for data in datalist:
         train_japanese_texts.append(data.strip())
+
+# with open("japanese_texts_trans_large") as f:
+#     datalist = f.readlines()
+#     for data in datalist:
+#         train_english_texts.append(data.strip())
+# with open("english_texts_trans_large") as f:
+#     datalist = f.readlines()
+#     for data in datalist:
+#         train_japanese_texts.append(data.strip())
 
 
 
@@ -178,22 +189,12 @@ target_vectorization = layers.TextVectorization(
 source_vectorization.adapt(train_english_texts)
 target_vectorization.adapt(train_japanese_texts)
 
-model = keras.models.load_model('seq2seq_transformer_large.h5', custom_objects={'PositionalEmbedding': PositionalEmbedding,'TransformerEncoder': TransformerEncoder,'TransformerDecoder': TransformerDecoder})
+model = keras.models.load_model('seq2seq_transforme_large_50over.h5', custom_objects={'PositionalEmbedding': PositionalEmbedding,'TransformerEncoder': TransformerEncoder,'TransformerDecoder': TransformerDecoder})
 
 
 
 
 
-train_japanese_texts = []
-train_english_texts = []
-with open("english_texts_pp") as f:
-    datalist = f.readlines()
-    for data in datalist:
-        train_english_texts.append(data.strip())
-with open("japanese_texts_pp") as f:
-    datalist = f.readlines()
-    for data in datalist:
-        train_japanese_texts.append(data.strip())
 
 
 ja_vocab = target_vectorization.get_vocabulary()
@@ -217,9 +218,18 @@ def decode_sequence(input_sentence):
 
 
 print("start-------------------")
-while True:
-    input_sentence = str(input())
-    print(decode_sequence(input_sentence)[8:-6])
+with open("seq2seq_transformer_large50_test" ,mode='a') as f_test:
+    with open("english_texts_trans_large") as f:
+        datalist = f.readlines()
+        for data in tqdm(datalist):
+            f_test.writelines(decode_sequence(data.strip())[8:-6])
+            f_test.writelines("\n")
+
+
+
+# while True:
+#     input_sentence = str(input())
+#     print(decode_sequence(input_sentence)[8:-6])
 
 
 
